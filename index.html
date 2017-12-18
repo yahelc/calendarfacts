@@ -45,13 +45,12 @@
 	    ]),
 	    "?",
 	    "Apparently",
-	    choose(["it causes a predictable increase in car accidents",
-	        "that's why we have leap seconds",
-	        "scientists are really worried", ["it was even more extreme during the", choose(["Bronze Age", "Ice Age", "Cretaceous", "1990s"])],
-	        ["there's a proposal to fix it, but it", choose(["will never happen", "actually makes things worse", "is stalled in Congress", "might be unconstitutional"])],
-	        "it's getting worse and no one knows why"
-	    ]),
-		"."
+	    choose(["it causes a predictable increase in car accidents.",
+	        "that's why we have leap seconds.",
+	        "scientists are really worried.", ["it was even more extreme during the", choose(["Bronze Age.", "Ice Age.", "Cretaceous.", "1990s."])],
+	        ["there's a proposal to fix it, but it", choose(["will never happen.", "actually makes things worse.", "is stalled in Congress.", "might be unconstitutional."])],
+	        "it's getting worse and no one knows why."
+	    ])
 
 	]
 	function resolve(data){
@@ -68,7 +67,7 @@
 	}
 
 	window.onload = function(){
-			document.getElementById("output").innerText = resolve(data).replace(" ?","?")
+			document.getElementById("output").innerText = resolve(data).replace(" ?","?").replace
 		}
 		
 </script>
