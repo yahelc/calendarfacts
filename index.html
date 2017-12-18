@@ -1,0 +1,86 @@
+<!DOCTYPE!>
+<html lang="en">
+<head>
+	<meta charset="utf=8">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+	<style>
+		body { font-family:Lucida,Helvetica,sans-serif; font-variant: small-caps;}
+		#output { font-size: 50px;}
+		#container {padding:5px;}
+		small{display:block;}
+		</style>
+	<script>
+	
+	function choose(list){
+		 return list[Math.floor(Math.random() * list.length)];
+	}
+	var data = [
+	    "Did you know that",
+
+	    choose([
+	        ["the", choose(["Fall", "Spring"]), "Equinox"],
+	        ["the", choose(["Winter", "Summer"]), choose(["Solstice", "Olympics"])],
+	        ["the", choose(["earliest", "latest"]), choose(["sunrise", "sunset"])],
+	        ["Daylight", choose(["Saving", "Savings"]), "Time"],
+	        ["leap", choose(["year", "day"])],
+	        "Easter", ["the", ["Harvest", "Super", "Blood"], "Moon"],
+	        "Toyota Truck Month",
+	        "Shark Week"
+	    ]),
+	    choose([
+	        ["happens", choose(["earlier", "later", "at the wrong time"]), "every year"],
+	        ["drifts out of sync with the", choose([
+	            choose(["sun", "moon", "zodiac", [choose(["Gregorian", "Mayan", "lunar", "iPhone"]), "calendar"], "atomic clock in Colorado"])
+	        ])],
+	        ["might", choose(["not happen", "happen twice"]), "this year"]
+	    ]),
+	    "because of",
+	    choose([
+	        ["time zone legislation in", choose(["Indiana", "Arizona", "Russia"])],
+	        ["a decree by the Pope in the 1500s"],
+	        [choose(["precession", "libration", "nutation", "libation", "eccentricity", "obliquity"]), "of the", choose(["moon", "sun", "Earth's axis", "equator", "prime meridian", [choose(["International Date", "Mason-Dixon"]), "Line"]])],
+	        ["magnetic field reversal"],
+	        ["an arbitrary decision by", choose(["Benjamin Franklin", "Isaac Newton", "FDR"])]
+
+	    ]),
+	    "?",
+	    "Apparently",
+	    choose(["it causes a predictable increase in car accidents",
+	        "that's why we have leap seconds",
+	        "scientists are really worried", ["it was even more extreme during the", choose(["Bronze Age", "Ice Age", "Cretaceous", "1990s"])],
+	        ["there's a proposal to fix it, but it", choose(["will never happen", "actually makes things worse", "is stalled in Congress", "might be unconstitutional"])],
+	        "it's getting worse and no one knows why"
+	    ]),
+		"."
+
+	]
+	function resolve(data){
+		var output = "";
+		for(var i = 0; i< data.length; i++){
+			if(typeof data[i] === "object"){
+				output += resolve(data[i])
+			}
+			else{
+				output +=  data[i] + " ";
+			}
+		}
+		return output;
+	}
+
+	window.onload = function(){
+			document.getElementById("output").innerText = resolve(data).replace(" ?","?")
+		}
+		
+</script>
+<style>
+	#output
+	</style>
+</head><body><div id="container">
+	<h2>Calendar Facts Generator</h2>
+	<div id="output">
+	</div>
+<small>Inspired by <a href="https://xkcd.com/1930/">XKCD 1930: Calendar Facts</a></small>
+<small>Built in spare time by Yahel Carmon.</small>
+<small>Code on <a href="https://github.com/yahelc/calendarfacts">Github</a></small>
+</div>
+</body></html>
